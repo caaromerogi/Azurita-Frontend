@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     this.httpService.signUpMethod(this.newUser).subscribe({
       next: (msg) => {
         alert(msg.message);
-        this.route.navigateByUrl('/index');
+        this.route.navigateByUrl('/login');
       },
       error: (err: Error) => {
         alert(err.error.message);
