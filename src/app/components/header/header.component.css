@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap");
+
+.container {
+  margin: auto;
+  max-width: 1500px;
+}
+
+.navbar {
+  font-family: Mukta;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#hamburguer {
+  display: none;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-left: 4vw;
+  padding-bottom: 0;
+}
+
+.nav-ul ul {
+  padding-right: 3vw;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.nav-ul ul li {
+  list-style-type: none;
+  margin-left: 1.5rem;
+}
+
+.nav-ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 920px) {
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .logo {
+    margin-bottom: 8px;
+  }
+
+  .hamburguer {
+    margin-bottom: 8px;
+    margin-right: 10px;
+  }
+
+  .hamburguer a img {
+    display: flex;
+    justify-content: center;
+  }
+
+  #hamburguer {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+  }
+
+  .nav-ul {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-ul ul {
+    background-color: black;
+    flex-direction: column;
+  }
+
+  .nav-ul ul li {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 16px;
+  }
+
+  .nav-ul ul li a {
+    color: white;
+  }
+
+  .nav-ul.show {
+    height: 316px;
+    margin: 0;
+  }
+
+  .frase2 {
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 50px;
+  }
+
+  .productContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .columnProduct {
+    width: 70vw;
+  }
+  .columnProduct .image img {
+    width: 70vw;
+  }
+
+  .footer .nombre {
+    margin-top: 50px;
+    font-size: 30px;
+  }
+
+  .footer .copyright {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+}

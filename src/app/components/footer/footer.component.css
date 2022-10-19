@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .nombre {
+  margin-top: 50px;
+  font-size: 60px;
+}
+
+.categorias .ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 15px;
+}
+
+.categorias .ul li a {
+  font-family: Mukta;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000000;
+  font-size: 14px;
+}
+
+.footer .copyright {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.redesSociales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.redesSociales .instagram img {
+  margin-right: 15px;
+  width: 50px;
+}
+
+.redesSociales .whatsapp img {
+  margin-left: 15px;
+  width: 34px;
+}
