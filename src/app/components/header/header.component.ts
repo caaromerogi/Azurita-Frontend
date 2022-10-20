@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/models/Product';
+import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
 
 @Component({
   selector: 'app-header',

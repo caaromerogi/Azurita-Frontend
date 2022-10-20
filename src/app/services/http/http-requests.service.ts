@@ -34,7 +34,13 @@ export class HttpRequestsService {
     );
   }
 
-  getAllProducts(): Observable<Product> {
-    return this.httpClient.get<Product>(this.host + '/get/getAllProducts');
+  getAllProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.host + '/get/getAllProducts');
+  }
+
+  getProductById(productId: string): Observable<Product> {
+    return this.httpClient.get<Product>(
+      this.host + `/get/findByProductId/${productId}`
+    );
   }
 }

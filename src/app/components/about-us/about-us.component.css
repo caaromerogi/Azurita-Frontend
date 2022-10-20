@@ -1,0 +1,30 @@
+.nuestraMarca {
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: Mukta, sans-serif;
+}
+
+.nuestraMarca .texto {
+  width: 500px;
+  max-width: 600px;
+  min-width: none;
+}
+
+.nuestraMarca .imagen img {
+  object-fit: cover;
+  width: 500px;
+  height: 350px;
+}
+
+.texto .titulo {
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  color: #605e5c;
+}
+
+.texto .parrafo {
+  text-align: justify;
+}

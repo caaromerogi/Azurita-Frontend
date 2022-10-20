@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="background" style="background-image: url(images/background.jpg)">
+  <div
+    class="background"
+    style="background-image: url(../../../assets/images/background.jpg)"
+  >
     <div class="content">NUEVA COLECCION</div>
   </div>
 </div>
@@ -9,17 +12,21 @@
   <div class="frase2">PRECIOS ESPECIALES</div>
 </div>
 
-<div class="container">
-  <div class="productContainer">
+<div *ngIf="productsToShow" class="random-products-container">
+  <div *ngFor="let item of productsToShow" class="productContainer">
     <div class="columnProduct">
-      <div class="image"><img src="images/producto1.jpg" alt="" /></div>
+      <div class="image">
+        <img [src]="item.imgPath" alt="" />
+      </div>
       <div class="detalles">
-        <div class="nombreProducto">Diarios</div>
-        <div class="precioProducto">$45.000</div>
+        <div class="nombreProducto">{{ item.name }}</div>
+        <div class="precioProducto">
+          ${{ item.price | number: "1.0-2" }} COP
+        </div>
       </div>
       <div class="compra">
         <div class="carrito">
-          <img src="images/shopping-bag-white.svg" alt="" />
+          <img src="../../../assets/images/shopping-bag-white.svg" alt="" />
         </div>
         <div class="comprarInmediato">+</div>
       </div>
