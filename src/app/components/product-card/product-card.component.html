@@ -1,0 +1,43 @@
+<div class="container">
+  <div *ngIf="product" class="productContainer">
+    <div class="columnProduct">
+      <div class="image">
+        <img style="cursor: pointer" src="{{ product.imgPath }}" alt="" />
+        <div class="detalles">
+          <div style="cursor: pointer" class="nombreProducto">
+            {{ product.name }}
+          </div>
+          <div class="precioProducto">
+            ${{ product.price | number: "1.0-2" }} COP
+          </div>
+          <div>
+            <div *ngFor="let size of product.sizeDetails">
+              <input
+                [(ngModel)]="selectedSize"
+                value="{{ size.sizeName }}"
+                type="radio"
+                name="size"
+                id="{{ size.sizeName }}"
+              />
+              <label for="{{ size.sizeName }}"> {{ size.sizeName }}</label>
+            </div>
+          </div>
+          <div>
+            <label for="quantity">Cantidad</label>
+            <input
+              [(ngModel)]="quantity"
+              type="text"
+              name="quantity"
+              id="quantity"
+            />
+          </div>
+          <div class="compra">
+            <button (click)="sendItemToCart()" class="comprarInmediato">
+              Añadir al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { Message } from 'src/app/models/Message';
 import { Login } from 'src/app/models/Login';
 import { Jwt } from 'src/app/models/Jwt';
 import { Product } from 'src/app/models/Product';
+import { CartItem } from 'src/app/models/CartItem';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,11 @@ export class HttpRequestsService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
+
+  authHeader: HttpHeaders = this.httpOptions.headers.append(
+    'Authorization',
+    'Bearer ' + window.localStorage.getItem('token')
+  );
 
   signUpMethod(command: NewUser): Observable<Message> {
     return this.httpClient.post<Message>(
@@ -41,6 +47,19 @@ export class HttpRequestsService {
   getProductById(productId: string): Observable<Product> {
     return this.httpClient.get<Product>(
       this.host + `/get/findByProductId/${productId}`
+    );
+  }
+
+  addItemToCart(command: CartItem, token: string): Observable<CartItem> {
+    return this.httpClient.post<CartItem>(
+      this.host + '/user/addItemToCart',
+      command,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
     );
   }
 }

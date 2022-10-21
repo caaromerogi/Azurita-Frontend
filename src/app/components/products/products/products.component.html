@@ -1,1 +1,29 @@
-<p>products works!</p>
+<div *ngIf="products" class="random-products-container">
+  <div *ngFor="let item of products" class="productContainer">
+    <div class="columnProduct">
+      <div class="image">
+        <img
+          (click)="goToProductDetails(item.productId)"
+          style="cursor: pointer"
+          [src]="item.imgPath"
+          alt=""
+        />
+      </div>
+      <div class="detalles">
+        <div
+          (click)="goToProductDetails(item.productId)"
+          style="cursor: pointer"
+          class="nombreProducto"
+        >
+          {{ item.name }}
+        </div>
+        <div class="precioProducto">
+          ${{ item.price | number: "1.0-2" }} COP
+        </div>
+      </div>
+      <div class="compra">
+        <button class="comprarInmediato">+</button>
+      </div>
+    </div>
+  </div>
+</div>

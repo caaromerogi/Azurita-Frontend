@@ -12,6 +12,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products/products.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ProductsComponent } from './components/products/products/products.compo
     RegisterComponent,
     AboutUsComponent,
     ProductsComponent,
+    ProductCardComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

@@ -5,5 +5,5 @@ export type Product = {
   price: string;
   imgPath: string;
   name: string;
-  sizesDetails: Size[];
+  sizeDetails: Size[];
 };
