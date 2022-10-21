@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
     this.getCartItems();
   }
 
+  token: string = window.localStorage.getItem('token') as string;
   async getCartItems() {
     let token = window.localStorage.getItem('token') as string;
     let customerId = window.localStorage.getItem('customerId') as string;
@@ -32,16 +33,21 @@ export class CartComponent implements OnInit {
   }
 
   calculateTotal(): void {
-    console.log(
-      this.items?.reduce(
-        (item, value) => item + value.price * value.quantity,
-        0
-      )
-    );
     this.total = this.items?.reduce(
       (item, value) => item + value.quantity * value.price,
       0
     ) as number;
+  }
+
+  deleteItem(productId: string, size: string) {
+    this.httpClient.deleteItemFromCart(this.token, productId, size).subscribe({
+      next: (data) => {
+        this.items = this.items?.filter(
+          (item) => item.productId !== productId || item.size !== size
+        );
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   buy(): void {

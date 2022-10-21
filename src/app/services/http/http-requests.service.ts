@@ -75,4 +75,20 @@ export class HttpRequestsService {
       }
     );
   }
+
+  deleteItemFromCart(
+    token: string,
+    productId: string,
+    size: string
+  ): Observable<Message> {
+    return this.httpClient.delete<Message>(
+      this.host + `/user/deleteCartItem/${productId}/${size}`,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
+    );
+  }
 }

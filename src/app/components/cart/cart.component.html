@@ -25,7 +25,7 @@
               id=""
             />
           </div>
-          <div class="eliminar">
+          <div (click)="deleteItem(item.productId, item.size)" class="eliminar">
             <img src="../../../assets/images/trash.png" alt="" />
           </div>
         </div>
@@ -37,7 +37,7 @@
           </a>
         </div>
         <div class="pagar">
-          <div class="monto">${{ total }}</div>
+          <div class="monto">${{ total | number: "1.0-2" }} COP</div>
           <div>
             <input
               (click)="buy()"
