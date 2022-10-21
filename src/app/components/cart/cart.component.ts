@@ -45,6 +45,7 @@ export class CartComponent implements OnInit {
         this.items = this.items?.filter(
           (item) => item.productId !== productId || item.size !== size
         );
+        this.calculateTotal();
       },
       error: (err) => console.log(err),
     });
