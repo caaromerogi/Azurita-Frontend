@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="purchase-summary">
+    <div class="shipment-info">
+      <div class="info">
+        <h3 class="info-title">Información de envío</h3>
+        <div>
+          <label for="municipality">Municipio</label><br />
+          <input type="text" name="municipality" id="municipality" /><br />
+          <label for="address">Dirección</label><br />
+          <input type="text" name="address" id="address" /><br />
+          <button class="botonPagar">Confirmar Pedido</button>
+        </div>
+      </div>
+    </div>
+    <div class="products-window">
+      <h3 class="productos-title">Resumen de Productos</h3>
+      <div *ngFor="let item of items" class="products-container">
+        <div class="producto">
+          <div class="imagen"><img [src]="item.imgPath" alt="" /></div>
+          <div class="detalles">
+            <div class="descripcion">
+              <div class="nombre">{{ item.name }}</div>
+              <div class="color"><b>Talla:</b> {{ item.size }}</div>
+            </div>
+            <div class="precio">
+              <b>Precio:</b> ${{ item.price | number: "1.0-2" }}
+            </div>
+            <div class="cantidad"><b>Cantidad:</b> {{ item.quantity }}</div>
+            <div>
+              <b>Total:</b> ${{ item.price * item.quantity | number: "1.0-2" }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="monto"><b>Total: </b>${{ total | number: "1.0-2" }}</div>
+    </div>
+  </div>
+</div>

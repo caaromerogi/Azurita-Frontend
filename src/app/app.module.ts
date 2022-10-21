@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products/products.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PayViewComponent } from './components/pay-view/pay-view.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ProductsComponent,
     ProductCardComponent,
     NotFoundComponent,
+    PayViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

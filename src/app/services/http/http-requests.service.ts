@@ -91,4 +91,17 @@ export class HttpRequestsService {
       }
     );
   }
+
+  saveItems(token: string, command: CartItem[]): Observable<any> {
+    return this.httpClient.post<CartItem[]>(
+      this.host + '/user/saveItems',
+      command,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
+    );
+  }
 }

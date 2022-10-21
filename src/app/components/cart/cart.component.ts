@@ -10,9 +10,13 @@ import { HttpRequestsService } from 'src/app/services/http/http-requests.service
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  constructor(private route: Router, private httpClient: HttpRequestsService) {}
+  constructor(
+    private router: Router,
+    private httpClient: HttpRequestsService
+  ) {}
 
   items?: CartResponse[];
+  modifiedItems?: CartItem[];
   total: number = 0;
   ngOnInit(): void {
     this.getCartItems();
@@ -26,7 +30,6 @@ export class CartComponent implements OnInit {
       next: (cartElements) => {
         this.items = cartElements;
         this.calculateTotal();
-        console.log(this.items);
       },
       error: (err) => console.log(err),
     });
@@ -39,7 +42,7 @@ export class CartComponent implements OnInit {
     ) as number;
   }
 
-  deleteItem(productId: string, size: string) {
+  async deleteItem(productId: string, size: string) {
     this.httpClient.deleteItemFromCart(this.token, productId, size).subscribe({
       next: (data) => {
         this.items = this.items?.filter(
@@ -48,6 +51,22 @@ export class CartComponent implements OnInit {
         this.calculateTotal();
       },
       error: (err) => console.log(err),
+    });
+  }
+
+  async saveCartItems() {
+    this.modifiedItems = this.items?.map((item) => {
+      return {
+        productId: item.productId,
+        size: item.size,
+        customerId: window.localStorage.getItem('customerId') as string,
+        quantity: item.quantity,
+      };
+    });
+
+    this.httpClient.saveItems(this.token, this.modifiedItems!).subscribe({
+      next: (data) => this.router.navigateByUrl('/proceedtopay'),
+      error: (err) => console.error(err),
     });
   }
 

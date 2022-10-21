@@ -1,0 +1,117 @@
+* {
+  background-color: rgb(223, 219, 214);
+  font-family: Mukta, sans-serif;
+}
+
+b {
+  font-weight: 600;
+}
+
+input {
+  border-radius: 3px;
+  width: 200px;
+}
+.container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  height: 400px;
+  background-color: #e9e6e0;
+}
+
+.purchase-summary {
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  height: 400px;
+}
+
+.productos-title {
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  font-weight: 800;
+}
+
+.info-title {
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-weight: 800;
+}
+
+.subtitle {
+  padding-top: 20px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.products-window {
+  overflow: auto;
+}
+
+.producto {
+  padding-right: 150px;
+  padding-left: 40px;
+  display: flex;
+}
+
+.producto .imagen {
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.producto .imagen img {
+  display: inline-block;
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+}
+
+.producto .detalles {
+  font-size: 14px;
+  padding-top: 6px;
+}
+
+.producto .detalles .nombre {
+  font-size: 16px;
+}
+
+.monto {
+  margin-right: 10px;
+  text-align: end;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.shipment-info {
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ada7a2;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+}
+
+.info {
+  padding-right: 80px;
+}
+
+.botonPagar {
+  margin-top: 15px;
+  font-family: Mukta, sans-serif;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  border: none;
+  background-color: #afaba5;
+  width: 200px;
+  height: 25px;
+  cursor: pointer;
+}
