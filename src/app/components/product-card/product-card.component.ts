@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/Product';
 import { Error } from 'src/app/models/Error';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
 import { CartItem } from 'src/app/models/CartItem';
+import { AuthGuardService } from 'src/app/services/guard/auth-guard.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,7 +15,8 @@ export class ProductCardComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpRequestsService,
-    private router: Router
+    private router: Router,
+    private guard: AuthGuardService
   ) {}
 
   productId = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -48,22 +50,26 @@ export class ProductCardComponent implements OnInit {
   sendItemToCart() {
     let token = window.localStorage.getItem('token') as string;
     let customerId = window.localStorage.getItem('customerId') as string;
-    console.log(token);
-    console.log(customerId);
 
     this.item.customerId = customerId;
     this.item.productId = this.productId;
     this.item.size = this.selectedSize;
     this.item.quantity = this.quantity;
 
-    console.log(this.item);
-
-    this.httpClient.addItemToCart(this.item, token).subscribe({
-      next: (item) => console.log(item),
-      error: (err) => {
-        console.log(err);
-        alert('Ocurrió un error');
-      },
-    });
+    if (
+      this.guard.canActivate(
+        this.activatedRoute.snapshot,
+        this.router.routerState.snapshot
+      )
+    ) {
+      this.httpClient.addItemToCart(this.item, token).subscribe({
+        next: (item) => {
+          alert('Se añadió correctamente al carrito');
+        },
+        error: (err) => {
+          alert('Ocurrió un error');
+        },
+      });
+    }
   }
 }

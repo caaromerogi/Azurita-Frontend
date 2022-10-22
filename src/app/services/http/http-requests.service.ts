@@ -8,6 +8,7 @@ import { Jwt } from 'src/app/models/Jwt';
 import { Product } from 'src/app/models/Product';
 import { CartItem } from 'src/app/models/CartItem';
 import { CartResponse } from 'src/app/models/CartResponse';
+import { Order } from 'src/app/models/Order';
 
 @Injectable({
   providedIn: 'root',
@@ -95,6 +96,19 @@ export class HttpRequestsService {
   saveItems(token: string, command: CartItem[]): Observable<any> {
     return this.httpClient.post<CartItem[]>(
       this.host + '/user/saveItems',
+      command,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
+    );
+  }
+
+  createOrder(token: string, command: Order): Observable<any> {
+    return this.httpClient.post(
+      this.host + '/user/generatePurchaseOrder',
       command,
       {
         headers: new HttpHeaders({

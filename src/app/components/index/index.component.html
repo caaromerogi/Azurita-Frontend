@@ -16,19 +16,36 @@
   <div *ngFor="let item of productsToShow" class="productContainer">
     <div class="columnProduct">
       <div class="image">
-        <img [src]="item.imgPath" alt="" />
+        <img
+          style="cursor: pointer"
+          (click)="goToProductDetails(item.productId)"
+          [src]="item.imgPath"
+          alt=""
+        />
       </div>
       <div class="detalles">
-        <div class="nombreProducto">{{ item.name }}</div>
-        <div class="precioProducto">
+        <div
+          style="cursor: pointer"
+          (click)="goToProductDetails(item.productId)"
+          class="nombreProducto"
+        >
+          {{ item.name }}
+        </div>
+        <div
+          style="cursor: pointer"
+          (click)="goToProductDetails(item.productId)"
+          class="precioProducto"
+        >
           ${{ item.price | number: "1.0-2" }} COP
         </div>
       </div>
       <div class="compra">
-        <button class="carrito">
-          <img src="../../../assets/images/shopping-bag-white.svg" alt="" />
+        <button
+          (click)="goToProductDetails(item.productId)"
+          class="comprarInmediato"
+        >
+          +
         </button>
-        <button class="comprarInmediato">+</button>
       </div>
     </div>
   </div>

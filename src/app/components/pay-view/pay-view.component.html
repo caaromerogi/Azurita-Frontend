@@ -5,10 +5,22 @@
         <h3 class="info-title">Información de envío</h3>
         <div>
           <label for="municipality">Municipio</label><br />
-          <input type="text" name="municipality" id="municipality" /><br />
+          <input
+            [(ngModel)]="municipality"
+            type="text"
+            name="municipality"
+            id="municipality"
+          /><br />
           <label for="address">Dirección</label><br />
-          <input type="text" name="address" id="address" /><br />
-          <button class="botonPagar">Confirmar Pedido</button>
+          <input
+            [(ngModel)]="address"
+            type="text"
+            name="address"
+            id="address"
+          /><br />
+          <button (click)="confirmOrder()" class="botonPagar">
+            Confirmar Pedido
+          </button>
         </div>
       </div>
     </div>

@@ -1,9 +1,14 @@
+* {
+  font-family: Mukta, sans-serif;
+  background-color: rgb(223, 219, 214);
+}
+
 .container {
   margin: auto;
-  max-width: 1500px;
 }
 
 .random-products-container {
+  padding-top: 50px;
   margin: auto;
   max-width: 1200px;
   display: flex;

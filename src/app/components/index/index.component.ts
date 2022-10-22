@@ -9,7 +9,10 @@ import { HttpRequestsService } from 'src/app/services/http/http-requests.service
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  constructor(private route: Router, private httpClient: HttpRequestsService) {}
+  constructor(
+    private router: Router,
+    private httpClient: HttpRequestsService
+  ) {}
 
   products: Product[] = [];
   productsToShow: Product[] = [];
@@ -56,5 +59,9 @@ export class IndexComponent implements OnInit {
       this.productsToShow.push(this.products[randomProduct2]);
       this.productsToShow.push(this.products[randomProduct3]);
     }
+  }
+
+  goToProductDetails(id: string) {
+    this.router.navigateByUrl(`products/${id}`);
   }
 }

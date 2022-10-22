@@ -14,7 +14,8 @@
         <li><a routerLink="cart">CARRITO</a></li>
         <li><a routerLink="products">PRODUCTOS</a></li>
         <li><a routerLink="aboutus">SOBRE NOSOTROS</a></li>
-        <li><a routerLink="login">INICIAR SESION</a></li>
+        <li *ngIf="!token"><a routerLink="login">INICIAR SESION</a></li>
+        <li *ngIf="token" style="cursor: pointer" (click)="logout()">SALIR</li>
       </ul>
     </nav>
   </div>

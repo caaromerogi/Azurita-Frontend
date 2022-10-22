@@ -107,6 +107,7 @@
 }
 
 .compra .comprarInmediato {
+  cursor: pointer;
   margin-left: 5px;
   text-align: center;
   vertical-align: middle;
@@ -117,4 +118,8 @@
   font-weight: bolder;
   background-color: #afafaf;
   padding: 0px;
+}
+
+.compra .comprarInmediato:hover {
+  background-color: #9a9a9a;
 }

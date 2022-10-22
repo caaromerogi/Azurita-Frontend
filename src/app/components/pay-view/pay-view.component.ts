@@ -1,6 +1,8 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartResponse } from 'src/app/models/CartResponse';
+import { Order } from 'src/app/models/Order';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
 
 @Component({
@@ -17,9 +19,18 @@ export class PayViewComponent implements OnInit {
   ngOnInit(): void {
     this.getCartItems();
   }
-
+  address: string = '';
+  municipality: string = '';
+  date: string = '';
   items?: CartResponse[];
   total: number = 0;
+  order: Order = {
+    date: '',
+    municipality: '',
+    customerId: '',
+    address: '',
+  };
+  token: string = window.localStorage.getItem('token') as string;
   async getCartItems() {
     let token = window.localStorage.getItem('token') as string;
     let customerId = window.localStorage.getItem('customerId') as string;
@@ -37,5 +48,29 @@ export class PayViewComponent implements OnInit {
       (item, value) => item + value.quantity * value.price,
       0
     ) as number;
+  }
+
+  confirmOrder(): void {
+    let initialDate = Date.now();
+    let parseDate = formatDate(
+      initialDate,
+      'dd-MM-yyyy hh:mm:ss a',
+      'en-US',
+      '-0500'
+    );
+
+    this.order.address = this!.address;
+    this.order.customerId = window.localStorage.getItem('customerId') as string;
+    this.order.date = parseDate;
+    this.order.municipality = this!.municipality;
+
+    this.httpClient.createOrder(this.token, this.order!).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Su pedido se ha concretado exitosamente');
+        this.router.navigateByUrl('/index');
+      },
+      error: (err) => console.error(err),
+    });
   }
 }

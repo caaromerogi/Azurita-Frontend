@@ -15,6 +15,7 @@ import { ProductsComponent } from './components/products/products/products.compo
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PayViewComponent } from './components/pay-view/pay-view.component';
+import { AuthGuardService } from './services/guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { PayViewComponent } from './components/pay-view/pay-view.component';
     PayViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -9,6 +9,7 @@ import { PayViewComponent } from './components/pay-view/pay-view.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductsComponent } from './components/products/products/products.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuardService } from './services/guard/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -18,9 +19,13 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'products/:id', component: ProductCardComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuardService] },
   { path: '404', component: NotFoundComponent },
-  { path: 'proceedtopay', component: PayViewComponent },
+  {
+    path: 'proceedtopay',
+    component: PayViewComponent,
+    canActivate: [AuthGuardService],
+  },
   { path: '**', redirectTo: '/404' },
 ];
 
