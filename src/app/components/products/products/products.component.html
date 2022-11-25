@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="container-new-product">
+    <button
+      class="boton-crear-producto"
+      *ngIf="isAdmin"
+      routerLink="/addnewproduct"
+    >
+      Crear Producto
+    </button>
+  </div>
   <div *ngIf="products" class="random-products-container">
     <div *ngFor="let item of products" class="productContainer">
       <div class="columnProduct">
@@ -23,6 +32,13 @@
           </div>
         </div>
         <div class="compra">
+          <button
+            (click)="deleteProduct(item.productId)"
+            *ngIf="isAdmin"
+            class="delete-product"
+          >
+            x
+          </button>
           <button
             (click)="goToProductDetails(item.productId)"
             class="comprarInmediato"

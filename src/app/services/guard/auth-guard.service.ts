@@ -30,9 +30,12 @@ export class AuthGuardService implements CanActivate {
     if (window.localStorage.getItem('token') && !this.isExpired()) {
       return true;
     }
-    this.router.navigate(['login'], {
-      queryParams: { redirectURL: state.url },
-    });
+    window.localStorage.clear();
+    this.router
+      .navigate(['login'], {
+        queryParams: { redirectURL: state.url },
+      })
+      .then(() => window.location.reload());
 
     return false;
   }

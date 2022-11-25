@@ -46,6 +46,30 @@ export class HttpRequestsService {
     return this.httpClient.get<Product[]>(this.host + '/get/getAllProducts');
   }
 
+  createProduct(product: Product, token: string): Observable<any> {
+    return this.httpClient.post(
+      this.host + 'cud/create/createProduct',
+      product,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
+    );
+  }
+
+  deleteProduct(idProducto: number, token: string): Observable<any> {
+    return this.httpClient.delete(
+      this.host + `/cud/deleteProduct/${idProducto}`,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+      }
+    );
+  }
   getProductById(productId: string): Observable<Product> {
     return this.httpClient.get<Product>(
       this.host + `/get/findByProductId/${productId}`

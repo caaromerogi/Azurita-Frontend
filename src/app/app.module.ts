@@ -16,6 +16,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PayViewComponent } from './components/pay-view/pay-view.component';
 import { AuthGuardService } from './services/guard/auth-guard.service';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AuthGuardService } from './services/guard/auth-guard.service';
     ProductCardComponent,
     NotFoundComponent,
     PayViewComponent,
+    AddProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [AuthGuardService],

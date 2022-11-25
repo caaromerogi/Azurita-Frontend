@@ -1,0 +1,52 @@
+<div class="container">
+  <label for="img">Subir imagen</label>
+  <input type="file" name="img" id="img" /><br />
+  <label for="name">Nombre</label>
+  <input type="text" name="name" id="product-name" /><br />
+  <label for="price">Precio</label>
+  <input type="number" name="price" id="product-price" /><br />
+  <label for="XS">
+    <input
+      type="checkbox"
+      (change)="pushSize('XS')"
+      name="XS"
+      id="XS"
+      value="XS"
+    />
+    XS
+  </label>
+  <label for="S">
+    <input type="checkbox" (change)="pushSize('S')" name="S" id="S" value="S" />
+    S
+  </label>
+  <label for="M">
+    <input type="checkbox" (change)="pushSize('M')" name="M" id="M" value="M" />
+    M
+  </label>
+  <label for="L">
+    <input type="checkbox" (change)="pushSize('L')" name="L" id="L" value="L" />
+    L
+  </label>
+  <label for="XL">
+    <input
+      type="checkbox"
+      (change)="pushSize('XL')"
+      name="XL"
+      id="XL"
+      value="XL"
+    />
+    XL
+  </label>
+  <label for="XXL">
+    <input
+      type="checkbox"
+      (change)="pushSize('XXL')"
+      name="XXL"
+      id="XXL"
+      value="XXL"
+    />
+    XXL
+  </label>
+
+  <button (click)="view()">Ver</button>
+</div>

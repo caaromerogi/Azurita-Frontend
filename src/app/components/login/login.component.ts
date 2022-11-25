@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             .catch(() => this.router.navigate(['index']))
             .then(() => window.location.reload());
         } else {
-          this.router.navigate(['index']);
+          this.router.navigate(['index']).then(() => window.location.reload());
         }
       },
       error: (err: Error) => {

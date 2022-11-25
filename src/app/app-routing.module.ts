@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
     component: PayViewComponent,
     canActivate: [AuthGuardService],
   },
+  { path: 'addnewproduct', component: AddProductComponent },
   { path: '**', redirectTo: '/404' },
 ];
 

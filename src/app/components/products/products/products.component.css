@@ -7,9 +7,13 @@
   margin: auto;
 }
 
+.container-new-product {
+  text-align: center;
+}
+
 .random-products-container {
-  padding-top: 50px;
   margin: auto;
+  padding-top: 50px;
   max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
@@ -145,4 +149,28 @@
   opacity: 1.2;
   width: 36px;
   height: 36px;
+}
+
+.boton-crear-producto {
+  margin-top: 15px;
+  font-family: Mukta, sans-serif;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  border: none;
+  background-color: #afaba5;
+  width: 200px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.delete-product {
+  width: 36px;
+  background-color: rgb(239, 105, 105);
+}
+
+.delete-product:hover {
+  opacity: 1.5;
+  cursor: pointer;
 }
