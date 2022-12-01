@@ -17,6 +17,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PayViewComponent } from './components/pay-view/pay-view.component';
 import { AuthGuardService } from './services/guard/auth-guard.service';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { Storage, StorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,15 @@ import { AddProductComponent } from './components/add-product/add-product.compon
     PayViewComponent,
     AddProductComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFunctions(() => getFunctions()),
+    StorageModule,
+  ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })

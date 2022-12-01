@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "azurita-ed808"
+  },
+  "targets": {
+    "azurita-ed808": {
+      "hosting": {
+        "Azurita": [
+          "azurita-ed808"
+        ]
+      }
+    }
+  }
+}

@@ -33,7 +33,9 @@
         </div>
         <div class="compra">
           <button
-            (click)="deleteProduct(item.productId)"
+            (click)="
+              deleteProduct(item.productId, this.imgMap.get(item.productId)!)
+            "
             *ngIf="isAdmin"
             class="delete-product"
           >

@@ -11,8 +11,8 @@
             <div class="precioProducto">
               ${{ product.price | number: "1.0-2" }} COP
             </div>
-            <div>
-              <p>Selecciona una talla</p>
+            <p>Selecciona una talla</p>
+            <div class="sizes-radio">
               <div *ngFor="let size of product.sizeDetails">
                 <input
                   [(ngModel)]="selectedSize"

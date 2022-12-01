@@ -94,6 +94,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Azurita:build:production",
+            "firebaseProject": "azurita-ed808",
+            "firebaseHostingSite": "azurita-ed808"
+          }
         }
       }
     }

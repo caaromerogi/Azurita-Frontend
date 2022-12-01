@@ -1,52 +1,96 @@
 <div class="container">
-  <label for="img">Subir imagen</label>
-  <input type="file" name="img" id="img" /><br />
-  <label for="name">Nombre</label>
-  <input type="text" name="name" id="product-name" /><br />
-  <label for="price">Precio</label>
-  <input type="number" name="price" id="product-price" /><br />
-  <label for="XS">
-    <input
-      type="checkbox"
-      (change)="pushSize('XS')"
-      name="XS"
-      id="XS"
-      value="XS"
-    />
-    XS
-  </label>
-  <label for="S">
-    <input type="checkbox" (change)="pushSize('S')" name="S" id="S" value="S" />
-    S
-  </label>
-  <label for="M">
-    <input type="checkbox" (change)="pushSize('M')" name="M" id="M" value="M" />
-    M
-  </label>
-  <label for="L">
-    <input type="checkbox" (change)="pushSize('L')" name="L" id="L" value="L" />
-    L
-  </label>
-  <label for="XL">
-    <input
-      type="checkbox"
-      (change)="pushSize('XL')"
-      name="XL"
-      id="XL"
-      value="XL"
-    />
-    XL
-  </label>
-  <label for="XXL">
-    <input
-      type="checkbox"
-      (change)="pushSize('XXL')"
-      name="XXL"
-      id="XXL"
-      value="XXL"
-    />
-    XXL
-  </label>
+  <h2>AGREGAR/EDITAR PRODUCTO</h2>
+  <div class="sub-container">
+    <div class="img-container">
+      <img class="img-cover" [src]="url" alt="" />
+    </div>
+    <div class="data-container">
+      <label for="img">Subir imagen</label><br />
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        name="img"
+        id="img"
+      /><br />
+      <label for="name">Nombre</label><br />
+      <input
+        type="text"
+        [(ngModel)]="this.name"
+        name="name"
+        id="product-name"
+      /><br />
+      <label for="price">Precio</label><br />
+      <input
+        type="number"
+        [(ngModel)]="this.price"
+        name="price"
+        id="product-price"
+      /><br />
+      <label for="">Selección de tallas:</label><br />
+      <label for="XS">
+        <input
+          type="checkbox"
+          (change)="pushSize('XS')"
+          name="XS"
+          id="XS"
+          value="XS"
+        />
+        XS
+      </label>
+      <label for="S">
+        <input
+          type="checkbox"
+          (change)="pushSize('S')"
+          name="S"
+          id="S"
+          value="S"
+        />
+        S
+      </label>
+      <label for="M">
+        <input
+          type="checkbox"
+          (change)="pushSize('M')"
+          name="M"
+          id="M"
+          value="M"
+        />
+        M
+      </label>
+      <label for="L">
+        <input
+          type="checkbox"
+          (change)="pushSize('L')"
+          name="L"
+          id="L"
+          value="L"
+        />
+        L
+      </label>
+      <label for="XL">
+        <input
+          type="checkbox"
+          (change)="pushSize('XL')"
+          name="XL"
+          id="XL"
+          value="XL"
+        />
+        XL
+      </label>
+      <label for="XXL">
+        <input
+          type="checkbox"
+          (change)="pushSize('XXL')"
+          name="XXL"
+          id="XXL"
+          value="XXL"
+        />
+        XXL </label
+      ><br />
 
-  <button (click)="view()">Ver</button>
+      <button (click)="createNewProduct()" class="boton-crear-producto">
+        Enviar
+      </button>
+    </div>
+  </div>
 </div>

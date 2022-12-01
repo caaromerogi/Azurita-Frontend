@@ -5,6 +5,7 @@ import { Error } from 'src/app/models/Error';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
 import { CartItem } from 'src/app/models/CartItem';
 import { AuthGuardService } from 'src/app/services/guard/auth-guard.service';
+import { RetrieveImgService } from 'src/app/services/retrieveImg/retrieve-img.service';
 
 @Component({
   selector: 'app-product-card',
@@ -16,7 +17,8 @@ export class ProductCardComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpRequestsService,
     private router: Router,
-    private guard: AuthGuardService
+    private guard: AuthGuardService,
+    private imgService: RetrieveImgService
   ) {}
 
   productId = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -38,6 +40,10 @@ export class ProductCardComponent implements OnInit {
   async getProductById() {
     this.httpClient.getProductById(this.productId).subscribe({
       next: (item) => {
+        this.imgService
+          .retrieveImg(item.imgPath)
+          .then((url) => (item.imgPath = url as string))
+          .catch((err) => console.error(err));
         this.product = item;
       },
       error: (err: Error) => {

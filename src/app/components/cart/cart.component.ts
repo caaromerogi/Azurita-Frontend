@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/CartItem';
 import { CartResponse } from 'src/app/models/CartResponse';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
+import { RetrieveImgService } from 'src/app/services/retrieveImg/retrieve-img.service';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,8 @@ import { HttpRequestsService } from 'src/app/services/http/http-requests.service
 export class CartComponent implements OnInit {
   constructor(
     private router: Router,
-    private httpClient: HttpRequestsService
+    private httpClient: HttpRequestsService,
+    private imgService: RetrieveImgService
   ) {}
 
   items?: CartResponse[];
@@ -28,6 +30,13 @@ export class CartComponent implements OnInit {
     let customerId = window.localStorage.getItem('customerId') as string;
     this.httpClient.getUserCart(token, customerId).subscribe({
       next: (cartElements) => {
+        cartElements.forEach((product) => {
+          this.imgService
+            .retrieveImg(product.imgPath)
+            .then((url) => (product.imgPath = url as string))
+            .catch((err) => console.error(err));
+          this.items?.push(product);
+        });
         this.items = cartElements;
         this.calculateTotal();
       },

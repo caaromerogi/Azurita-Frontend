@@ -1,0 +1,72 @@
+* {
+  font-family: Mukta, sans-serif;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  border-width: 1px;
+  border-radius: 2px;
+  width: 200px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-style: solid;
+  border-radius: 2px;
+  border-width: 2px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-container {
+  display: flex;
+}
+
+.img-container {
+  margin: 10px;
+}
+
+.data-container {
+  margin: 10px;
+}
+
+.img-cover {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.boton-crear-producto {
+  margin-top: 15px;
+  font-family: Mukta, sans-serif;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  border: none;
+  background-color: #afaba5;
+  width: 100px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.boton-crear-producto:hover {
+  opacity: 0.8;
+}

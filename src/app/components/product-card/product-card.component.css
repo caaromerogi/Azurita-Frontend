@@ -93,8 +93,8 @@ input:focus {
 
 .columnProduct .image img {
   object-fit: cover;
-  min-width: 300px;
-  width: 30vw;
+  height: 300px;
+  width: 300px;
 }
 
 .detalles {
@@ -124,6 +124,13 @@ input:focus {
 .columnProduct .compra {
   display: flex;
   justify-content: space-between;
+}
+
+.sizes-radio {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 105px;
 }
 
 .compra .carrito {

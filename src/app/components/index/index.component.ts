@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
+import { RetrieveImgService } from 'src/app/services/retrieveImg/retrieve-img.service';
 
 @Component({
   selector: 'app-index',
@@ -11,7 +12,8 @@ import { HttpRequestsService } from 'src/app/services/http/http-requests.service
 export class IndexComponent implements OnInit {
   constructor(
     private router: Router,
-    private httpClient: HttpRequestsService
+    private httpClient: HttpRequestsService,
+    private imgService: RetrieveImgService
   ) {}
 
   products: Product[] = [];
@@ -24,9 +26,16 @@ export class IndexComponent implements OnInit {
   async getAllProducts() {
     this.httpClient.getAllProducts().subscribe({
       next: (productsResult) => {
-        this.products = productsResult;
+        productsResult.forEach((product) => {
+          {
+            this.imgService
+              .retrieveImg(product.imgPath)
+              .then((url) => (product.imgPath = url as string))
+              .catch((err) => console.error(err));
+            this.products?.push(product);
+          }
+        });
         this.showProductsIndex();
-        console.log(this.productsToShow[0].imgPath);
       },
       error: (err) => console.log(err),
     });

@@ -9,6 +9,7 @@ import { Product } from 'src/app/models/Product';
 import { CartItem } from 'src/app/models/CartItem';
 import { CartResponse } from 'src/app/models/CartResponse';
 import { Order } from 'src/app/models/Order';
+import { NewProduct } from 'src/app/models/NewProduct';
 
 @Injectable({
   providedIn: 'root',
@@ -46,9 +47,9 @@ export class HttpRequestsService {
     return this.httpClient.get<Product[]>(this.host + '/get/getAllProducts');
   }
 
-  createProduct(product: Product, token: string): Observable<any> {
+  createProduct(product: NewProduct, token: string): Observable<any> {
     return this.httpClient.post(
-      this.host + 'cud/create/createProduct',
+      this.host + '/cud/create/createProduct',
       product,
       {
         headers: new HttpHeaders({

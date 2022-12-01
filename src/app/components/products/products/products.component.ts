@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Authority } from 'src/app/models/Autorities';
 import { Product } from 'src/app/models/Product';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service';
+import { RetrieveImgService } from 'src/app/services/retrieveImg/retrieve-img.service';
 
 @Component({
   selector: 'app-products',
@@ -12,21 +13,32 @@ import { HttpRequestsService } from 'src/app/services/http/http-requests.service
 export class ProductsComponent implements OnInit {
   constructor(
     private router: Router,
-    private httpClient: HttpRequestsService
+    private httpClient: HttpRequestsService,
+    private imgService: RetrieveImgService
   ) {}
 
-  authorities?: Authority[];
-  isAdmin: boolean = false;
-  products?: Product[];
   ngOnInit(): void {
     this.getAllProducts();
     this.isLoggedAndAdmin();
   }
 
+  imgMap: Map<string, string> = new Map();
+
+  authorities?: Authority[];
+  isAdmin: boolean = false;
+  products?: Product[] = [];
+
   async getAllProducts() {
     this.httpClient.getAllProducts().subscribe({
       next: (productsResult) => {
-        this.products = productsResult;
+        productsResult.forEach((product) => {
+          this.imgMap.set(product.productId, product.imgPath);
+          this.imgService
+            .retrieveImg(product.imgPath)
+            .then((url) => (product.imgPath = url as string))
+            .catch((err) => console.error(err));
+          this.products?.push(product);
+        });
       },
       error: (err) => console.log(err),
     });
@@ -49,10 +61,16 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  deleteProduct(id: string): void {
+  deleteProduct(id: string, imgPath: string): void {
     let token = window.localStorage.getItem('token')!;
     this.httpClient.deleteProduct(parseInt(id), token).subscribe({
       next: (data) => {
+        this.imgService
+          .deleteImg(imgPath)
+          .then((data) =>
+            console.log('Product ' + id + ' deleted successfully')
+          )
+          .catch((err) => console.error(err));
         location.reload();
       },
       error: (err) => console.error(err),
