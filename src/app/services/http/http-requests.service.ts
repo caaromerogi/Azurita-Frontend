@@ -17,7 +17,7 @@ import { NewProduct } from 'src/app/models/NewProduct';
 export class HttpRequestsService {
   constructor(private httpClient: HttpClient) {}
 
-  host: string = 'http://localhost:8080';
+  host: string = 'https://azurita-backend-production.up.railway.app';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
